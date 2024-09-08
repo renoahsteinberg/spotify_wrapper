@@ -1,7 +1,10 @@
+import os
 import string
 import random
 import requests
+import webbrowser
 import json
+from dotenv import load_dotenv
 from urllib.parse import urlencode
 # ! from my_dec.request_decorator import auto_retry
 
@@ -11,8 +14,9 @@ from urllib.parse import urlencode
 
 # ? used in a mobile or web application, will implement further later
 
+
 class Authentication:
-    def __init__(self, client_id, client_secret, redirect_uri, scope):
+    def __init__(self, client_id="", client_secret="", redirect_uri="", scope=""):
         self.client_id = client_id
         self.client_secret = client_secret
         self.redirect_uri = redirect_uri
@@ -43,7 +47,7 @@ class Authentication:
 
     #@auto_retry()
     def _request_access_and_refresh_token(self, code):
-        token_url = 'https://accounts.spotify.com/api/token'
+        token_url = 'https://accounts.spotify.com/api/token?'
 
         data = {
             'grant_type': 'authorization_code',
@@ -59,7 +63,17 @@ class Authentication:
 
     def authenticate(self):
         auth_url = self._request_authorization()
-        
-        print(f'authorize on: {auth_url}')
-        
+
+        print(f'Authorize on: {auth_url}')
         webbrowser.open(auth_url)
+
+        code = input('Enter Authorization Code: ')
+
+        if code:
+            token = self._request_access_and_refresh_token(code)
+            print(f'Access Granted: {code}')
+        else:
+            print('Access Denied')
+
+    
+
