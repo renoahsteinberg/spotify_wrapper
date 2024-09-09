@@ -161,11 +161,11 @@ if __name__ == '__main__':
     #)
     #print(auth.auth())
 
-    #auth = AuthorizationCode(
-    #    client_id=os.getenv("CLIENT_ID"),
-    #    client_secret=os.getenv("CLIENT_SECRET"),
-    #    redirect_uri=REDIRECT_URI,
-    #    scope='user-read-private user-read-email',
-    #    show_dialog=""
-    #)
-    #token_data = auth.auth()
+    auth = AuthorizationCode(
+        client_id=os.getenv("CLIENT_ID"),
+        client_secret=os.getenv("CLIENT_SECRET"),
+        redirect_uri='https://127.0.0.1:8000/callback',
+        scope='user-read-private user-read-email',
+        show_dialog=""
+    )
+    token_data = auth.auth()
