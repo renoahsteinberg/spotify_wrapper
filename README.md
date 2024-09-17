@@ -1,4 +1,3 @@
-
 # clay-spotifywrapper
 
-This spotifywrapper is a little fun project, that i've started a few days ago. I want to finish it, in future. Currently it's an unusable product with not much design-thoughts
+Currently unusable and not much design thought. Just a little fun project, i'll be working on and improving when time comes
